@@ -11,6 +11,6 @@ namespace Common
     public interface IValidator : IService
     {
         [OperationContract]
-        Task<bool> Validate(DataModel model);
+        Task<string> Validate(DataModel model);
     }
 }

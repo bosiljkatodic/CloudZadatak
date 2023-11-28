@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
+using Microsoft.ServiceFabric.Services.Client;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
@@ -21,23 +22,61 @@ namespace Validator
             : base(context)
         { }
 
-        public async Task<bool> Validate(DataModel model)
+        public async Task<string> Validate(DataModel model)
         {
             if (model == null)
             {
-                //return "Model je null";
-                return false;
+                Console.WriteLine("Model je null");
+                return "Model je null";
             }
 
             if (model.Ime == null || model.Ime.Equals(string.Empty) || model.Prezime == null ||
                 model.Prezime.Equals(string.Empty) || model.IdKnjige <= 0 || model.KolicinaKnjige <= 0 || model.BrojRacuna <= 0)
             {
-                //return "Ulazne vrijednosti nisu u redu.";
-                return false;
+                Console.WriteLine("Ulazne vrijednosti nisu u redu.");
+                return "Ulazne vrijednosti nisu u redu.";
+            }
+
+            var fabricClient = new FabricClient();
+
+            var serviceUri = new Uri("fabric:/CloudZadatak/TransactionCoordinator");
+            var partitionList = await fabricClient.QueryManager.GetPartitionListAsync(serviceUri);
+            ITransaction proxy = null;
+
+            foreach (var partition in partitionList)
+            {
+                var partitionKey = partition.PartitionInformation as Int64RangePartitionInformation;
+
+                if (partitionKey != null)
+                {
+                    var servicePartitionKey = new ServicePartitionKey(partitionKey.LowKey);
+
+                    proxy = ServiceProxy.Create<ITransaction>(serviceUri, servicePartitionKey);
+                    break;
+                }
             }
 
 
             try
+            {
+                var prepareValue = await proxy.Prepare(model);
+
+                if (prepareValue)
+                {
+                    return "Ok";
+                }
+                else
+                {
+                    return "Doslo je do greske pri pozivu funkcije Prepare";
+                }
+            }
+            catch (Exception)
+            {
+                //await proxy.RollBack();
+                return "Transaction failed";
+            }
+
+            /*try
             {
                 var proxy = ServiceProxy.Create<Common.ITransaction>(new Uri("fabric:/CloudZadatak/TransactionCoordinator"), new Microsoft.ServiceFabric.Services.Client.ServicePartitionKey(1));
 
@@ -46,7 +85,7 @@ namespace Validator
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-            }
+            }*/
         }
 
         /// <summary>

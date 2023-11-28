@@ -14,8 +14,8 @@ namespace Common
         [OperationContract]
         Task<bool> Prepare(DataModel model);
         [OperationContract]
-        void Commit();
+        Task Commit();
         [OperationContract]
-        void Rollback();
+        Task Rollback();
     }
 }

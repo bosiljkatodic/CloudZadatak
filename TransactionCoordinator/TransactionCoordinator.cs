@@ -4,20 +4,38 @@ using System.Fabric;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
+using Common;
+using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 
 namespace TransactionCoordinator
 {
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class TransactionCoordinator : StatefulService
+    internal sealed class TransactionCoordinator : StatefulService, Common.ITransaction
     {
         public TransactionCoordinator(StatefulServiceContext context)
             : base(context)
         { }
+
+        public Task Commit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Prepare(DataModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Rollback()
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) for this service replica to handle client or user requests.
@@ -28,7 +46,7 @@ namespace TransactionCoordinator
         /// <returns>A collection of listeners.</returns>
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
         {
-            return new ServiceReplicaListener[0];
+            return this.CreateServiceRemotingReplicaListeners();
         }
 
         /// <summary>
