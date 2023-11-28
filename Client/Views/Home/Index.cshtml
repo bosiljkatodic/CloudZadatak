@@ -1,0 +1,28 @@
+﻿@using static Common.DataModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form action="/Home/ValidateModel" method="post">
+    <label>Ime</label>
+    <input type="text" name="Ime" />
+    <br />
+    <label>Prezime</label>
+    <input type="text" name="Prezime" />
+    <br />
+    <label>Id knjige</label>
+    <input type="number" name="IdKnjige" />
+    <br />
+    <label>Količina knjige</label>
+    <input type="number" name="KolicinaKnjige" />
+    <br />
+    <label>Broj računa</label>
+    <input type="number" name="BrojRacuna" />
+    <br />
+
+    <input type="submit" value="Pošalji" />
+</form>
+
+<label>@ViewBag.Result</label>

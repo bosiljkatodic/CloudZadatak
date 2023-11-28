@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "38UtPItfOwWALHIIILkto9oInwSDN5tL7wq2XV9qsUpcFYa2jd5XyhPkVWYAtgzdEaNY7E8GDsNs57kab73BIg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Bosa\\Desktop\\cloud 2\\CloudZadatak\\TransactionCoordinator\\TransactionCoordinator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric\\10.0.1816\\microsoft.servicefabric.10.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.data\\7.0.1816\\microsoft.servicefabric.data.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.data.extensions\\7.0.1816\\microsoft.servicefabric.data.extensions.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.data.interfaces\\7.0.1816\\microsoft.servicefabric.data.interfaces.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.diagnostics.internal\\7.0.1816\\microsoft.servicefabric.diagnostics.internal.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.fabrictransport.internal\\7.0.1816\\microsoft.servicefabric.fabrictransport.internal.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.services\\7.0.1816\\microsoft.servicefabric.services.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.servicefabric.services.remoting\\7.0.1816\\microsoft.servicefabric.services.remoting.7.0.1816.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\6.0.0\\microsoft.aspnetcore.app.runtime.win-x64.6.0.0.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\6.0.0\\microsoft.windowsdesktop.app.runtime.win-x64.6.0.0.nupkg.sha512",
+    "C:\\Users\\Bosa\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\6.0.0\\microsoft.netcore.app.runtime.win-x64.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
